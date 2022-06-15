@@ -12,21 +12,24 @@ import { ImUsers } from "react-icons/im";
 import { AiTwotoneSetting } from "react-icons/ai";
 import { SideBarButtonFooter } from "../button/SideBarButtonFooter";
 import classes from "./styles/SideBar.module.css";
+import { useRouter } from "next/router";
 
-export const SideBar = () => {
+export const SideBar = (props) => {
+  const router = useRouter();
   return (
     <>
       <div className={classes.sider}>
         <div>
           <div className={classes.sider_header}>
             <SideBarButtonFooter
+              onClick={() => router.push("/home")}
               image={
                 <>
                   <IoIosHome />
                   <HiOutlineChevronRight />
                 </>
               }
-              text={"تستی محمدرضا بهزادی"}
+              text={props.projectTitle}
             />
           </div>
           <div>

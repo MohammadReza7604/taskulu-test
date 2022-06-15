@@ -5,7 +5,7 @@ import classes from "./styles/SideBarButtonFooter.module.css";
 
 export const SideBarButtonFooter = (props) => {
   return (
-    <div className={classes.footer_btn}>
+    <div className={classes.footer_btn} onClick={props.onClick}>
       {props.image}
       <Text>{props.text}</Text>
     </div>

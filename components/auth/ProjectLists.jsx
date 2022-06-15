@@ -11,10 +11,10 @@ import { useEffect } from "react";
 import { useState } from "react";
 
 const { Text } = Typography;
-export const Project = () => {
+export const ProjectLists = () => {
   const token = Cookies.get("token");
   const router = useRouter();
-  const [projectData, setProjectData] = useState([]);
+
   useEffect(() => {
     axios
       .get(BaseUrl + BackendUrls.task, {
@@ -25,26 +25,13 @@ export const Project = () => {
       .then((res) => {
         console.log(res.data);
       });
-  }, [projectData]);
-  useEffect(() => {
-    if (router.query.id) {
-      axios
-        .get(BaseUrl + BackendUrls.list + "list/" + router.query.id + "/", {
-          headers: {
-            Authorization: "Bearer " + token,
-          },
-        })
-        .then((res) => {
-          console.log(res.data);
-          setProjectData(res.data);
-        });
-    }
-  }, [router.query]);
+  }, []);
+
   return (
     <div className={classes.main}>
       <div className={classes.board}>
         <div className={classes.header}>
-          <Text>{projectData.name}</Text>
+          <Text>List name </Text>
         </div>
         <div className={classes.body}>
           <BoardBox

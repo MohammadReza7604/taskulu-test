@@ -8,7 +8,7 @@ import { BiSearch } from "react-icons/bi";
 import classes from "./styles/BoardHeader.module.css";
 
 const { Search } = Input;
-export const BoardHeader = () => {
+export const ProjectHeader = () => {
   const suffix = (
     <BiSearch
       style={{

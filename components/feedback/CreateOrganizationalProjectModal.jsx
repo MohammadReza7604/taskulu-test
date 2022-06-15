@@ -36,6 +36,7 @@ export const CreateOrganizationalProjectModal = (props) => {
         message.success("با موفقیت ایجاد شد");
         props.setModalVisibility((r) => !r);
         props.setUpdate((r) => !r);
+
         console.log(res);
       });
   };
