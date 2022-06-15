@@ -1,0 +1,19 @@
+.footer_btn {
+  display: flex;
+  gap: 5px;
+  color: #c9d5de;
+  font-size: 16px;
+  margin-right: 5px;
+  cursor: pointer;
+  justify-content: flex-start;
+  align-items: center;
+}
+.footer_btn span {
+  color: #c9d5de;
+}
+.footer_btn:hover span {
+  color: #fff;
+}
+.footer_btn:hover svg {
+  color: #fff;
+}

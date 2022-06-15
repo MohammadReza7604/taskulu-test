@@ -1,0 +1,153 @@
+.modal {
+  display: flex;
+}
+.modal_title {
+  display: flex;
+  align-items: center;
+  padding: 0 14px 15px;
+  margin-bottom: 40px;
+}
+.modal_title .exit_btn {
+  display: flex;
+  gap: 10px;
+}
+.user_avatar {
+  border-radius: 50%;
+}
+.description {
+  display: flex;
+  flex-direction: column;
+  margin-right: 12px;
+  gap: 5px;
+}
+.user span {
+  color: #757575;
+  font-size: 13px;
+  font-style: italic;
+}
+.exit_btn {
+  margin-right: 410px;
+  margin-top: -30px;
+}
+.exit_btn svg {
+  font-size: 18px;
+}
+.description_actions {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+  max-width: 520px;
+}
+.btn_pen svg {
+  color: #0d8aee;
+}
+.btn_pen span {
+  color: #0d8aee;
+}
+.btn_pen {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  align-items: center;
+  background-color: transparent;
+}
+.btn_tag {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  align-items: center;
+  background-color: transparent;
+}
+.btn_tag svg {
+  color: #515151;
+}
+.btn_tag span {
+  color: #515151;
+}
+.file {
+  width: 100px;
+  display: flex;
+  align-items: center;
+  margin-top: 32px;
+  gap: 5px;
+}
+.file :global(.ant-typography) {
+  margin-bottom: 0;
+}
+.file h5:after {
+  border-top: 1px solid #ececec;
+  content: "";
+  display: block;
+  width: 520px;
+  height: 2px;
+  position: absolute;
+  top: 205px;
+  right: 98px;
+}
+.upload_btn svg {
+  color: #0d8aee;
+}
+.upload_btn span {
+  color: #0d8aee;
+}
+.upload_btn {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+  align-items: center;
+  background-color: transparent;
+}
+.file_upload {
+  display: flex;
+  gap: 52px;
+  margin-top: 12px;
+}
+.file_upload .txt {
+  color: #757575;
+  font-size: 15px;
+  cursor: pointer;
+  font-weight: bold;
+}
+.comments {
+  display: flex;
+  align-items: center;
+  margin-top: 32px;
+  gap: 460px;
+}
+.comments :global(.ant-typography) {
+  margin-bottom: 0;
+}
+.comments h5:after {
+  border-top: 1px solid #ececec;
+  content: "";
+  display: block;
+  width: 450px;
+  height: 2px;
+  position: absolute;
+  top: 305px;
+  right: 110px;
+}
+.comments_title {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.comment_txt textarea {
+  width: 100%;
+  margin-top: 20px;
+}
+.comment_txt button {
+  width: 60px;
+  align-self: flex-end;
+}
+.comment_txt {
+  width: 590px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.left :global(.ant-divider-horizontal) {
+  width: 190px;
+  min-width: 0;
+  margin-right: 70px;
+}

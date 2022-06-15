@@ -1,0 +1,22 @@
+.modal_btn {
+  width: 200px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 5px;
+  margin-right: 72px;
+}
+.modal_btn :global(.ant-btn) {
+  display: flex;
+}
+.modal_btn svg {
+  font-size: 20px;
+}
+.modal_btn span {
+  font-size: 14px;
+  font-weight: bold;
+}
+.modal_btn:hover {
+  background-color: #7e7e7e3e;
+}

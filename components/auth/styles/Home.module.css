@@ -1,0 +1,63 @@
+.home {
+  width: 100%;
+  height: inherit;
+  background-color: #f5f5f5;
+}
+.home a {
+  text-align: center;
+  padding: 5px;
+}
+.home a:hover {
+  background-color: #deddddd0;
+}
+.contents {
+  max-width: 960px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding: 30px 0;
+}
+.star_title {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-bottom: 16px;
+}
+.star_title :global(.ant-typography) {
+  margin-bottom: 0;
+}
+.star_title svg {
+  font-size: 16px;
+}
+.organization {
+  display: flex;
+  flex-direction: column;
+  margin-top: 30px;
+  gap: 16px;
+}
+.organization_title {
+  display: flex;
+  gap: 18px;
+}
+.card_project {
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+}
+
+.create_organization {
+  margin-top: 30px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  padding: 10px;
+}
+.create_organization:hover {
+  background-color: #dad8d89a;
+}
+.create_organization svg {
+  cursor: pointer;
+}

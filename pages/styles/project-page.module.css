@@ -1,0 +1,6 @@
+.wrapper {
+  display: flex;
+}
+.task {
+  width: 100%;
+}

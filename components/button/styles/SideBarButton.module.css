@@ -1,0 +1,31 @@
+.sidebar_btn {
+  width: 95%;
+  margin: 6px 0;
+  padding: 4px 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+.sidebar_btn svg {
+  color: #c9d5de;
+  font-size: 18px;
+}
+.sidebar_btn span {
+  color: #c9d5de;
+  font-size: 18px;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+}
+.sidebar_btn:hover {
+  background-color: rgba(0, 0, 0, 0.204);
+}
+.sidebar_btn:active {
+  background-color: rgba(30, 255, 0, 0.204);
+}
+.sidebar_btn span:active {
+  color: #fff;
+}
+.sidebar_btn svg:active {
+  color: #fff;
+}

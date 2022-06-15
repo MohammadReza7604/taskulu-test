@@ -1,0 +1,73 @@
+.card {
+  width: 290px;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.12), 0 1px 4px rgba(0, 0, 0, 0.24);
+  border-radius: 5px;
+  margin: 0 auto;
+  height: 340px;
+}
+.card:hover {
+  cursor: pointer;
+  background-color: #ececec3c;
+  box-shadow: 4px 4px 6px 2px rgba(0, 0, 0, 0.327);
+}
+.card :global(.ant-card-extra) {
+  margin: 0;
+  width: 100%;
+  padding: 8px 0;
+}
+.chart_card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.chart_card span {
+  color: #757575;
+  font-size: 12px;
+}
+.card :global(.ant-card-head) {
+  padding: 0;
+}
+.title {
+  display: flex;
+  direction: ltr;
+  gap: 12px;
+  justify-content: flex-start;
+  width: 100%;
+  margin: 0 -14px 4px 0;
+}
+.title :global(.ant-typography) {
+  margin-bottom: 0;
+}
+.chart {
+  width: 155px;
+  margin: 0 auto;
+}
+.title svg {
+  font-size: 1.2rem;
+  color: #0d8aee;
+}
+.items {
+  display: flex;
+  direction: ltr;
+  gap: 65px;
+  justify-content: center;
+  margin-top: 14px;
+}
+.items_value {
+  display: flex;
+  direction: ltr;
+  gap: 83px;
+  justify-content: center;
+  margin-top: 5px;
+}
+.avatar {
+  box-shadow: 0 0 0 3px #4fc3f7, inset 0 0 0 1px #0ba8ef;
+}
+.item_avatar {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+.item_avatar span {
+  color: #515151;
+}

@@ -1,0 +1,33 @@
+.box {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.box_header {
+  display: flex;
+  gap: 205px;
+  margin-right: 18px;
+}
+.cards {
+  margin-right: 15px;
+}
+
+.title_text {
+  direction: ltr;
+  display: flex;
+  gap: 5px;
+}
+.title_text span {
+  color: #515151;
+}
+.box_header svg {
+  cursor: pointer;
+  font-weight: bold;
+  color: #515151;
+}
+.box_header svg:hover {
+  color: #000;
+}
+.text span:first-child {
+  font-style: italic;
+}

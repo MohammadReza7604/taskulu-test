@@ -1,0 +1,14 @@
+.modal {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+.inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.buttons {
+  display: flex;
+  justify-content: space-between;
+}
