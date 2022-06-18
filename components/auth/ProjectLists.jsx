@@ -2,7 +2,7 @@ import React from "react";
 import { Button, Form, Input, message, Typography } from "antd";
 import { BoardCard } from "../data-display/BoardCard";
 import { ListBox } from "../data-display/ListBox";
-import classes from "./styles/Board.module.css";
+import classes from "./styles/ProjectLists.module.css";
 import axios from "axios";
 import { BackendUrls, BaseUrl } from "../../utils/backend-url";
 import Cookies from "js-cookie";

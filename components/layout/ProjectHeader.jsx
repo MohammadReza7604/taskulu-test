@@ -5,7 +5,7 @@ import React from "react";
 import { AiOutlinePlus } from "react-icons/ai";
 import { IoMdSettings } from "react-icons/io";
 import { BiSearch } from "react-icons/bi";
-import classes from "./styles/BoardHeader.module.css";
+import classes from "./styles/ProjectHeader.module.css";
 
 const { Search } = Input;
 export const ProjectHeader = () => {
