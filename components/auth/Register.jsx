@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Checkbox, Alert, Typography, Form, message, Spin } from "antd";
+import { Button, Checkbox, Alert, Typography, Form } from "antd";
 import Image from "next/image";
 import Title from "antd/lib/typography/Title";
 import { CustomCard } from "../data-display/CustomCard";
@@ -7,8 +7,7 @@ import { CustomInput } from "../data-entry/CustomInput";
 import classes from "./styles/Register.module.css";
 import { useRouter } from "next/router";
 import axios from "axios";
-import { BackendUrls, BaseUrl } from "../../utils/backend-url";
-import NextNProgress from "nextjs-progressbar";
+import { BackendUrls, BaseUrl, httpRequest } from "../../utils/backend-url";
 
 const { Text, Link } = Typography;
 
@@ -27,13 +26,11 @@ export const Register = () => {
 
   const finishFormHandler = () => {
     const params = form.getFieldsValue();
-
-    axios
-      .post(BaseUrl + BackendUrls.register, params)
-      .then((response) => {
+    httpRequest(BackendUrls.register, "POST", params)
+      .then((res) => {
         router.push("/");
       })
-      .catch((error) => {
+      .catch((err) => {
         errorFailedHandler();
       });
   };

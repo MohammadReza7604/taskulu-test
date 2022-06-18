@@ -6,7 +6,7 @@ import { CustomCard } from "../data-display/CustomCard";
 import { CustomInput } from "../data-entry/CustomInput";
 import classes from "./styles/Login.module.css";
 import { useRouter } from "next/router";
-import { BackendUrls, BaseUrl } from "../../utils/backend-url";
+import { BackendUrls, BaseUrl, httpRequest } from "../../utils/backend-url";
 import Cookies from "js-cookie";
 import axios from "axios";
 
@@ -23,15 +23,10 @@ export const Login = () => {
   }, 10000);
   const finishFormHandler = () => {
     const params = form.getFieldsValue();
-    axios
-      .post(BaseUrl + BackendUrls.login, params)
-      .then((res) => {
-        Cookies.set("token", res.data.access);
-        router.push("/home");
-      })
-      .catch((error) => {
-        // message.error(error);
-      });
+    httpRequest(BackendUrls.login, "POST", params).then((res) => {
+      Cookies.set("token", res.data.access);
+      router.push("/home");
+    });
   };
 
   return (

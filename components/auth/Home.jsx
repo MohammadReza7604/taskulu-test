@@ -7,7 +7,7 @@ import Text from "antd/lib/typography/Text";
 import { useRouter } from "next/router";
 import Cookies from "js-cookie";
 import axios from "axios";
-import { BackendUrls, BaseUrl } from "../../utils/backend-url";
+import { BackendUrls, BaseUrl, httpRequest } from "../../utils/backend-url";
 import { OrganizationModal } from "../feedback/OrganizationModal";
 import classes from "./styles/Home.module.css";
 import { Organization } from "../data-display/Organization";
@@ -30,15 +30,9 @@ export const Home = (props) => {
     setShowModal(false);
   };
   useEffect(() => {
-    axios
-      .get(BaseUrl + BackendUrls.organization, {
-        headers: {
-          Authorization: "Bearer " + token,
-        },
-      })
-      .then((res) => {
-        setOrgName(res.data);
-      });
+    httpRequest(BackendUrls.organization, "GET").then((res) => {
+      setOrgName(res.data);
+    });
   }, [update]);
 
   return (

@@ -3,15 +3,15 @@ import React from "react";
 import { GoCalendar } from "react-icons/go";
 import classes from "./styles/BoardCard.module.css";
 
-export const BoardCard = () => {
+export const BoardCard = (props) => {
   return (
-    <div className={classes.box}>
+    <div className={classes.box} onClick={props.onClick} status={props.status}>
       <div className={classes.task_title}>
-        <Text>Task</Text>
+        <Text>{props.taskTitle}</Text>
       </div>
       <div className={classes.task_date}>
         <GoCalendar />
-        <Text>8 اردیبهشت</Text>
+        <Text>{props.taskCreateDate}</Text>
       </div>
     </div>
   );

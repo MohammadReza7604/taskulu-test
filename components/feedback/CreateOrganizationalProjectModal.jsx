@@ -1,44 +1,22 @@
-import { DownOutlined, UserOutlined } from "@ant-design/icons";
-import {
-  Button,
-  Dropdown,
-  Form,
-  Input,
-  Menu,
-  message,
-  Modal,
-  Select,
-  Space,
-} from "antd";
+import { Button, Form, message, Modal } from "antd";
 import Title from "antd/lib/typography/Title";
-import axios from "axios";
-import Cookies from "js-cookie";
-import React, { useState } from "react";
-import { BackendUrls, BaseUrl } from "../../utils/backend-url";
+import React from "react";
+import { BackendUrls, httpRequest } from "../../utils/backend-url";
 import { CustomInput } from "../data-entry/CustomInput";
 import classes from "./styles/CreateOrganizationalProjectModal.module.css";
 
 export const CreateOrganizationalProjectModal = (props) => {
   const [form] = Form.useForm();
-  const token = Cookies.get("token");
   const finishFormHandler = () => {
     const params = {
       name: form.getFieldsValue().name,
       sazman: props.id,
     };
-    axios
-      .post(BaseUrl + BackendUrls.project, params, {
-        headers: {
-          Authorization: "Bearer " + token,
-        },
-      })
-      .then((res) => {
-        message.success("با موفقیت ایجاد شد");
-        props.setModalVisibility((r) => !r);
-        props.setUpdate((r) => !r);
-
-        console.log(res);
-      });
+    httpRequest(BackendUrls.project, "POST", params).then((res) => {
+      message.success("با موفقیت ایجاد شد");
+      props.setModalVisibility((r) => !r);
+      props.setUpdate((r) => !r);
+    });
   };
 
   return (

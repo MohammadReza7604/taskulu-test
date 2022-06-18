@@ -1,12 +1,7 @@
-.box {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
 .box_header {
   display: flex;
-  gap: 205px;
-  margin-right: 18px;
+  justify-content: space-between;
+  margin: 0 18px;
 }
 .cards {
   margin-right: 15px;

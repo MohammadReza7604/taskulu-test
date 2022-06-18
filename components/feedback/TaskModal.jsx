@@ -1,4 +1,4 @@
-import { Button, Divider, Modal, Switch } from "antd";
+import { Button, Divider, Modal, Select, Switch } from "antd";
 import Text from "antd/lib/typography/Text";
 import Image from "next/image";
 import React, { useState } from "react";
@@ -25,8 +25,13 @@ import TextArea from "antd/lib/input/TextArea";
 import { ModalButton } from "../button/ModalButton";
 import classes from "./styles/TaskModal.module.css";
 
-export const TaskModal = () => {
+const { Option } = Select;
+export const TaskModal = (props) => {
   const [visible, setVisible] = useState(false);
+
+  const handleChange = (value) => {
+    console.log(`selected ${value}`);
+  };
   return (
     <>
       <Button type="primary" onClick={() => setVisible(true)}>
@@ -94,7 +99,19 @@ export const TaskModal = () => {
             </div>
           </div>
           <div className={classes.left}>
-            <ModalButton image={<GoSettings />} text={"Todo"} />
+            <Select
+              defaultValue="Todo"
+              style={{
+                width: 200,
+                height: "auto",
+                marginRight: 72,
+              }}
+              onChange={handleChange}
+            >
+              <Option value="Todo">Todo</Option>
+              <Option value="Doing">Doing</Option>
+              <Option value="Done">Doing</Option>
+            </Select>
             <ModalButton image={<FaThList />} text={" لیست: Taskulu "} />
             <Divider className={classes.divider} />
             <ModalButton image={<ImUsers />} text={" اعضا "} />

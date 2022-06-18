@@ -1,0 +1,14 @@
+.wrapper {
+  width: 277px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin: 20px 0;
+}
+.wrapper input {
+  height: 55px;
+}
+.buttons {
+  display: flex;
+  gap: 10px;
+}

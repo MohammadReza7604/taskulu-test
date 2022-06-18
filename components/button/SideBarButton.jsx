@@ -1,4 +1,3 @@
-import { Button } from "antd";
 import Text from "antd/lib/typography/Text";
 import React from "react";
 import classes from "./styles/SideBarButton.module.css";

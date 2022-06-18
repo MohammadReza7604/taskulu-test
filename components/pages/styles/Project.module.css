@@ -1,6 +1,7 @@
 .wrapper {
   display: flex;
+  overflow: hidden;
 }
 .task {
-  width: 100%;
+  width: 85%;
 }

@@ -4,30 +4,18 @@ import Title from "antd/lib/typography/Title";
 import classes from "./styles/OrganizationModal.module.css";
 import { CustomInput } from "../data-entry/CustomInput";
 import axios from "axios";
-import { BackendUrls, BaseUrl } from "../../utils/backend-url";
+import { BackendUrls, BaseUrl, httpRequest } from "../../utils/backend-url";
 import Cookies from "js-cookie";
 
 export const OrganizationModal = (props) => {
   const [form] = Form.useForm();
-  const token = Cookies.get("token");
-
   const finishFormHandler = () => {
     const data = form.getFieldsValue();
-    axios
-      .post(BaseUrl + BackendUrls.organization, data, {
-        headers: {
-          Authorization: "Bearer " + token,
-        },
-      })
-      .then((res) => {
-        message.success("با موفقیت ایجاد شد");
-        props.setModalVisibility((r) => !r);
-        props.setUpdate((r) => !r);
-        console.log(res);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    httpRequest(BackendUrls.organization, "POST", data).then((res) => {
+      message.success("با موفقیت ایجاد شد");
+      props.setModalVisibility((r) => !r);
+      props.setUpdate((r) => !r);
+    });
   };
   return (
     <Modal
