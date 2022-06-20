@@ -1,6 +1,5 @@
 .sider {
   width: 15%;
-  height: 100vh;
   background-color: #1c334e;
   display: flex;
   flex-direction: column;
@@ -48,14 +47,13 @@
   color: #fff;
 }
 .footer {
-  width: 11%;
+  width: 15%;
   padding-top: 10px;
   padding-bottom: 10px;
   background-color: #14263c;
   max-height: 73px;
   display: flex;
   flex-direction: column;
-  gap: 5px;
   position: absolute;
   bottom: 0;
   list-style-type: none;

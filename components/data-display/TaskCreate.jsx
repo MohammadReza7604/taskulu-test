@@ -1,14 +1,12 @@
 import { Button, Form, Input } from "antd";
-import axios from "axios";
-import Cookies from "js-cookie";
 import moment from "moment";
 import React, { useState } from "react";
-import { BackendUrls, BaseUrl, httpRequest } from "../../utils/backend-url";
+import { BackendUrls, httpRequest } from "../../utils/backend-url";
 import classes from "./styles/TaskCreate.module.css";
 
 export const TaskCreate = (props) => {
+  console.log(props.listId);
   const [form] = Form.useForm();
-  const token = Cookies.get("token");
   const [showTaskCreateBox, setShowTaskCreateBox] = useState(false);
   const finishFormHandler = () => {
     const params = {
@@ -16,10 +14,9 @@ export const TaskCreate = (props) => {
       explain: "aaa",
       created: moment().format("YYYY-MM-DD"),
       status: props.status,
-      listt: 21,
+      listt: props.listId,
     };
     console.log(params);
-
     httpRequest(BackendUrls.task, "POST", params).then((res) => {
       console.log(res.data);
     });
@@ -33,7 +30,7 @@ export const TaskCreate = (props) => {
             <Button type="primary" htmlType="submit" size="small">
               ذخیره
             </Button>
-            <Button size="small" type="text">
+            <Button size="small" type="text" onClick={props.onClick}>
               لغو
             </Button>
           </div>

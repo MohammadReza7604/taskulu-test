@@ -8,7 +8,7 @@ export const TaskList = (props) => {
     <>
       <div className={classes.box_header}>
         <div className={classes.title_text}>
-          <Text>({props.numberOfCards})</Text>
+          {/* <Text>({props.numberOfCards})</Text> */}
           <Text>{props.statusName}</Text>
         </div>
         <BsPlusLg onClick={props.onClick} />

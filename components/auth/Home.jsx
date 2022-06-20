@@ -13,8 +13,6 @@ import classes from "./styles/Home.module.css";
 import { Organization } from "../data-display/Organization";
 
 export const Home = (props) => {
-  const token = Cookies.get("token");
-
   const [showOrganizationModal, setShowOrganizationModal] = useState(false);
   const [orgName, setOrgName] = useState([]);
 

@@ -8,7 +8,6 @@ import classes from "./styles/Login.module.css";
 import { useRouter } from "next/router";
 import { BackendUrls, BaseUrl, httpRequest } from "../../utils/backend-url";
 import Cookies from "js-cookie";
-import axios from "axios";
 
 const { Text, Link } = Typography;
 export const Login = () => {
@@ -23,10 +22,14 @@ export const Login = () => {
   }, 10000);
   const finishFormHandler = () => {
     const params = form.getFieldsValue();
-    httpRequest(BackendUrls.login, "POST", params).then((res) => {
-      Cookies.set("token", res.data.access);
-      router.push("/home");
-    });
+    httpRequest(BackendUrls.login, "POST", params)
+      .then((res) => {
+        Cookies.set("token", res.data.access);
+        router.push("/home");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   return (

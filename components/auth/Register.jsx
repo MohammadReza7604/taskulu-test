@@ -1,13 +1,12 @@
 import React, { useState } from "react";
-import { Button, Checkbox, Alert, Typography, Form } from "antd";
+import { Button, Checkbox, Alert, Typography, Form, message } from "antd";
 import Image from "next/image";
 import Title from "antd/lib/typography/Title";
 import { CustomCard } from "../data-display/CustomCard";
 import { CustomInput } from "../data-entry/CustomInput";
 import classes from "./styles/Register.module.css";
 import { useRouter } from "next/router";
-import axios from "axios";
-import { BackendUrls, BaseUrl, httpRequest } from "../../utils/backend-url";
+import { BackendUrls, httpRequest } from "../../utils/backend-url";
 
 const { Text, Link } = Typography;
 
@@ -19,10 +18,6 @@ export const Register = () => {
   setTimeout(() => {
     setShowAlert(false);
   }, 10000);
-  const errorFailedHandler = (error) => {
-    const getError = form.getFieldError();
-    console.log(getError);
-  };
 
   const finishFormHandler = () => {
     const params = form.getFieldsValue();
@@ -30,9 +25,7 @@ export const Register = () => {
       .then((res) => {
         router.push("/");
       })
-      .catch((err) => {
-        errorFailedHandler();
-      });
+      .catch((err) => {});
   };
 
   return (
@@ -55,7 +48,6 @@ export const Register = () => {
             className={classes.login_form}
             form={form}
             onFinish={finishFormHandler}
-            onFinishFailed={errorFailedHandler}
           >
             <CustomInput
               names={"username"}

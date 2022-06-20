@@ -3,10 +3,7 @@ import { Button, Form, Input, message, Typography } from "antd";
 import { BoardCard } from "../data-display/BoardCard";
 import { ListBox } from "../data-display/ListBox";
 import classes from "./styles/ProjectLists.module.css";
-import axios from "axios";
-import { BackendUrls, BaseUrl } from "../../utils/backend-url";
-import Cookies from "js-cookie";
-import { useEffect } from "react";
+import { BackendUrls, httpRequest } from "../../utils/backend-url";
 import { useState } from "react";
 import { GoPlus } from "react-icons/go";
 import { TaskModal } from "../feedback/TaskModal";
@@ -14,23 +11,16 @@ import { TaskModal } from "../feedback/TaskModal";
 const { Text } = Typography;
 export const ProjectLists = (props) => {
   const [form] = Form.useForm();
-  const token = Cookies.get("token");
-  const [showTaskBox, setShowTaskBox] = useState(false);
-  const [update, setUpdate] = useState(true);
-  const [lists, setLists] = useState([]);
+  const [lists, setLists] = useState(props.lists);
   const finishFormHandler = () => {
     const params = {
       name: form.getFieldsValue().name,
       project: props.projectId,
     };
-    httpRequest(BackendUrls.list, "POST", params)
-      .then((res) => {
-        form.resetFields();
-        setUpdate(true);
-      })
-      .finally(() => {
-        setUpdate(false);
-      });
+    httpRequest(BackendUrls.list, "POST", params).then((res) => {
+      form.resetFields();
+      props.setUpdate((r) => !r);
+    });
   };
 
   return (
@@ -44,28 +34,7 @@ export const ProjectLists = (props) => {
                   <Text>{item.name}</Text>
                 </div>
                 <div className={classes.body}>
-                  <ListBox
-                    onClick={() => setShowTaskBox(true)}
-                    cardsTodo={
-                      <>
-                        {showTaskBox && console.log("True")}
-                        <BoardCard
-                          onClick={() => console.log("Hi")}
-                          status={1}
-                        />
-                      </>
-                    }
-                    cardsDoing={
-                      <>
-                        <BoardCard status={2} />
-                      </>
-                    }
-                    cardsDone={
-                      <>
-                        <BoardCard status={3} />
-                      </>
-                    }
-                  />
+                  <ListBox listId={item.id} />
                 </div>
               </div>
             );
