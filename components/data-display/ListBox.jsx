@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import { BackendUrls, httpRequest } from "../../utils/backend-url";
+import React, { useState } from "react";
 import { BoardCard } from "./BoardCard";
 import classes from "./styles/ListBox.module.css";
 import { TaskCreate } from "./TaskCreate";
@@ -7,25 +6,26 @@ import { TaskList } from "./TaskList";
 
 export const ListBox = (props) => {
   const [show, setShow] = useState({ visible: false, status: 0 });
-  const [taskList, setTaskList] = useState([]);
-  useEffect(() => {
-    httpRequest(BackendUrls.task, "GET").then((res) => {
-      setTaskList(res.data);
-    });
-  }, []);
+
   return (
     <div className={classes.box}>
       <TaskList
         statusName={"Todo"}
         cards={
           <>
-            <BoardCard status={1} />
+            {props.dos.map((item) => {
+              return (
+                item.status === 1 && (
+                  <BoardCard
+                    taskTitle={item.name}
+                    taskCreateDate={item.created}
+                  />
+                )
+              );
+            })}
+
             {show.status === 1 && (
-              <TaskCreate
-                status={1}
-                listId={props.listId}
-                onClick={() => setShow(false)}
-              />
+              <TaskCreate status={1} listId={props.listId} showBox={true} />
             )}
           </>
         }
@@ -35,10 +35,19 @@ export const ListBox = (props) => {
         statusName={"Doing"}
         cards={
           <>
-            <BoardCard />
+            {props.dos.map((item) => {
+              return (
+                item.status === 2 && (
+                  <BoardCard
+                    taskTitle={item.name}
+                    taskCreateDate={item.created}
+                  />
+                )
+              );
+            })}
             {show.status === 2 && (
               <TaskCreate
-                status={1}
+                status={2}
                 listId={props.listId}
                 onClick={() => setShow(false)}
               />
@@ -51,10 +60,19 @@ export const ListBox = (props) => {
         statusName={"Done"}
         cards={
           <>
-            <BoardCard />
+            {props.dos.map((item) => {
+              return (
+                item.status === 3 && (
+                  <BoardCard
+                    taskTitle={item.name}
+                    taskCreateDate={item.created}
+                  />
+                )
+              );
+            })}
             {show.status === 3 && (
               <TaskCreate
-                status={1}
+                status={3}
                 listId={props.listId}
                 onClick={() => setShow(false)}
               />

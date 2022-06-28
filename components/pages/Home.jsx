@@ -6,31 +6,41 @@ import Title from "antd/lib/typography/Title";
 import Text from "antd/lib/typography/Text";
 import { useRouter } from "next/router";
 import Cookies from "js-cookie";
-import axios from "axios";
-import { BackendUrls, BaseUrl, httpRequest } from "../../utils/backend-url";
+import { BackendUrls, httpRequest } from "../../utils/backend-url";
 import { OrganizationModal } from "../feedback/OrganizationModal";
 import classes from "./styles/Home.module.css";
 import { Organization } from "../data-display/Organization";
+import { message, Spin } from "antd";
+
+// TODO: home too poosheye auth????????
 
 export const Home = (props) => {
   const [showOrganizationModal, setShowOrganizationModal] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [orgName, setOrgName] = useState([]);
-
   const [update, setUpdate] = useState(false);
-
   const router = useRouter();
   const exitHandler = () => {
     Cookies.remove("token");
-    router.push("/");
+    router.push("/login");
   };
   const cancelHandler = () => {
     setShowOrganizationModal(false);
     setShowModal(false);
   };
   useEffect(() => {
-    httpRequest(BackendUrls.organization, "GET").then((res) => {
-      setOrgName(res.data);
-    });
+    // TODO: agar error dasht chi????
+    setLoading(true);
+    httpRequest(BackendUrls.organization, "GET")
+      .then((res) => {
+        setOrgName(res.data);
+      })
+      .finally(() => {
+        setLoading(false);
+      })
+      .catch((err) => {
+        message.error(err.response.data.detail);
+      });
   }, [update]);
 
   return (
@@ -44,14 +54,18 @@ export const Home = (props) => {
           </div>
           <HomeCard onClick={() => router.push("/task")} />
         </div>
-        {orgName.map((item) => (
-          <Organization
-            orgNameTitle={item.name}
-            id={item.id}
-            projects={item.projects ? item.projects : []}
-            setUpdate={setUpdate}
-          />
-        ))}
+        {loading ? (
+          <Spin spinning={loading} tip="درحال بارگذاری" />
+        ) : (
+          orgName.map((item) => (
+            <Organization
+              orgNameTitle={item.name}
+              id={item.id}
+              projects={item.projects ? item.projects : []}
+              setUpdate={setUpdate}
+            />
+          ))
+        )}
         <div
           className={classes.create_organization}
           onClick={() => setShowOrganizationModal(true)}

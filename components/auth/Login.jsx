@@ -11,7 +11,7 @@ import Cookies from "js-cookie";
 
 const { Text, Link } = Typography;
 export const Login = () => {
-  const [showMessage, setShowMessage] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [showAlert, setShowAlert] = useState(true);
 
   const router = useRouter();
@@ -25,10 +25,14 @@ export const Login = () => {
     httpRequest(BackendUrls.login, "POST", params)
       .then((res) => {
         Cookies.set("token", res.data.access);
-        router.push("/home");
+        router.push("/");
+      })
+      .finally(() => {
+        setLoading(false);
       })
       .catch((err) => {
-        console.log(err);
+        // TODO: error ro nabayad log begiri bayad be soorate message namayesh bedi
+        message.error(err.response.data.detail);
       });
   };
 
@@ -40,13 +44,6 @@ export const Login = () => {
         </div>
         <div className={classes.form}>
           <div className={classes.message_box}>
-            {showMessage && (
-              <Alert
-                message="نام کاربری یا کلمه عبور اشتباه است"
-                type="error"
-                closable
-              />
-            )}
             {showAlert && (
               <Alert
                 message="نشست شما منقضی شده است. برای ادامه، لطفاً دوباره وارد شوید."
@@ -80,7 +77,12 @@ export const Login = () => {
             <Checkbox>من را برای ۳۰ روز به یاد داشته باش </Checkbox>
             <div className={classes.btn}>
               <Button onClick={() => router.push("register")}>عضویت</Button>
-              <Button type="primary" htmlType="submit">
+              <Button
+                type="primary"
+                htmlType="submit"
+                loading={loading}
+                onClick={() => setLoading(true)}
+              >
                 ورود
               </Button>
             </div>

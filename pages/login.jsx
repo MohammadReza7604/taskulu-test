@@ -1,9 +1,10 @@
-import { Home } from "../components/pages/Home";
+import React from "react";
 import "antd/dist/antd.css";
+import { Login } from "../components/auth/Login";
 
-// TODO: index nabayad login bashe bayad safheye asli bashe va baraye login bayad safheye joda dasht
 export const getServerSideProps = (context) => {
   const token = context.req.cookies.token;
+  console.log(token);
   if (!token) {
     return {
       redirect: {
@@ -18,7 +19,9 @@ export const getServerSideProps = (context) => {
     },
   };
 };
-const HomePage = () => {
-  return <Home />;
+
+const Login = (props) => {
+  return <Login />;
 };
-export default HomePage;
+
+export default Login;

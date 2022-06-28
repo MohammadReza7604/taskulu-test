@@ -12,6 +12,7 @@ const { Text, Link } = Typography;
 
 export const Register = () => {
   const [showAlert, setShowAlert] = useState(true);
+  const [loading, setLoading] = useState(false);
   const router = useRouter();
   const [form] = Form.useForm();
 
@@ -25,7 +26,12 @@ export const Register = () => {
       .then((res) => {
         router.push("/");
       })
-      .catch((err) => {});
+      .finally(() => {
+        setLoading(false);
+      })
+      .catch((err) => {
+        message.error(err.response.data.detail);
+      });
   };
 
   return (
@@ -95,7 +101,12 @@ export const Register = () => {
             <Checkbox>من را برای ۳۰ روز به یاد داشته باش </Checkbox>
             <div className={classes.btn}>
               <Button onClick={() => router.push("/")}>ورود</Button>
-              <Button type="primary" htmlType="submit">
+              <Button
+                type="primary"
+                htmlType="submit"
+                loading={loading}
+                onClick={() => setLoading(true)}
+              >
                 عضویت
               </Button>
             </div>

@@ -22,7 +22,7 @@ export const SideBar = (props) => {
         <div>
           <div className={classes.sider_header}>
             <SideBarButtonFooter
-              onClick={() => router.push("/home")}
+              onClick={() => router.push("/")}
               image={
                 <>
                   <IoIosHome />

@@ -11,19 +11,21 @@ export const Project = () => {
   const router = useRouter();
   const [projectData, setProjectData] = useState([]);
   const [update, setUpdate] = useState(false);
+  const [loading, setLoading] = useState(false);
   const exitHandler = () => {
     Cookies.remove("token");
     router.push("/");
   };
   useEffect(() => {
     if (router.query.id) {
-      httpRequest(
-        BackendUrls.list + "list/" + router.query.id + "/",
-        "GET"
-      ).then((res) => {
-        console.log("Project", res.data.lists.dos);
-        setProjectData(res.data);
-      });
+      setLoading(true);
+      httpRequest(BackendUrls.list + "list/" + router.query.id + "/", "GET")
+        .finally(() => {
+          setLoading(false);
+        })
+        .then((res) => {
+          setProjectData(res.data);
+        });
     }
   }, [router.query, update]);
   return (
@@ -32,6 +34,7 @@ export const Project = () => {
       <div className={classes.task}>
         <ProjectHeader username={"نام کاربری"} exitClick={exitHandler} />
         <ProjectLists
+          loading={loading}
           projectId={projectData.id}
           lists={projectData.lists}
           setUpdate={setUpdate}
