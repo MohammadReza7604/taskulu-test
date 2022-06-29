@@ -1,13 +1,10 @@
 import React from "react";
-import { Button, Form, Input, message, Spin, Typography } from "antd";
-import { BoardCard } from "../data-display/BoardCard";
+import { Button, Form, Input, Spin, Typography } from "antd";
 import { ListBox } from "../data-display/ListBox";
 import classes from "./styles/ProjectLists.module.css";
 import { BackendUrls, httpRequest } from "../../utils/backend-url";
-import { useState } from "react";
 import { GoPlus } from "react-icons/go";
 import { TaskModal } from "../feedback/TaskModal";
-import { useEffect } from "react";
 
 const { Text } = Typography;
 export const ProjectLists = (props) => {
@@ -41,6 +38,7 @@ export const ProjectLists = (props) => {
                   listId={item.id}
                   dos={item.dos}
                   taskLists={props.lists}
+                  setUpdate={props.setUpdate}
                 />
               </div>
             </div>
@@ -48,7 +46,10 @@ export const ProjectLists = (props) => {
         })
       )}
       <Form form={form} onFinish={finishFormHandler}>
-        <Form.Item name="name">
+        <Form.Item
+          name="name"
+          rules={[{ required: true, message: "پرکردن فیلد الزامی است" }]}
+        >
           <div className={classes.new_list_box}>
             <Input type="text" placeholder="ایجاد لیست جدید" name="name" />
             <Button
@@ -60,7 +61,6 @@ export const ProjectLists = (props) => {
           </div>
         </Form.Item>
       </Form>
-      <TaskModal />
     </div>
   );
 };

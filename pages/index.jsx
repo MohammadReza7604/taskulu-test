@@ -7,7 +7,7 @@ export const getServerSideProps = (context) => {
   if (!token) {
     return {
       redirect: {
-        destination: "/",
+        destination: "/login",
         persistent: false,
       },
     };
@@ -18,7 +18,7 @@ export const getServerSideProps = (context) => {
     },
   };
 };
-const HomePage = () => {
+const HomePage = (props) => {
   return <Home />;
 };
 export default HomePage;

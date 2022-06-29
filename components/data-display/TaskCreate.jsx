@@ -1,4 +1,4 @@
-import { Button, Form, Input } from "antd";
+import { Button, Form, Input, message } from "antd";
 import moment from "moment";
 import React, { useState } from "react";
 import { BackendUrls, httpRequest } from "../../utils/backend-url";
@@ -7,6 +7,7 @@ import classes from "./styles/TaskCreate.module.css";
 export const TaskCreate = (props) => {
   const [form] = Form.useForm();
   const [showTaskCreateBox, setShowTaskCreateBox] = useState(props.showBox);
+
   const finishFormHandler = () => {
     const params = {
       name: form.getFieldsValue().name,
@@ -17,7 +18,8 @@ export const TaskCreate = (props) => {
     };
     httpRequest(BackendUrls.task, "POST", params)
       .then((res) => {
-        console.log(res.data);
+        props.setUpdate((r) => !r);
+        message.success("با موفقیت ایجاد شد");
       })
       .finally(() => {
         setShowTaskCreateBox(false);

@@ -1,6 +1,7 @@
 import Text from "antd/lib/typography/Text";
 import React from "react";
 import { GoCalendar } from "react-icons/go";
+import jMoment from "moment-jalaali";
 import classes from "./styles/BoardCard.module.css";
 
 export const BoardCard = (props) => {
@@ -11,7 +12,7 @@ export const BoardCard = (props) => {
       </div>
       <div className={classes.task_date}>
         <GoCalendar />
-        <Text>{props.taskCreateDate}</Text>
+        <Text>{jMoment(props.taskCreateDate).format("jYYYY/jM/jD")}</Text>
       </div>
     </div>
   );

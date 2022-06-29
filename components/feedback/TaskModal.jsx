@@ -27,17 +27,21 @@ import classes from "./styles/TaskModal.module.css";
 
 const { Option } = Select;
 export const TaskModal = (props) => {
-  const [visible, setVisible] = useState(false);
-
+  const cancelHandler = () => {
+    props.setVisible((r) => !r);
+  };
   const handleChange = (value) => {
     console.log(`selected ${value}`);
   };
   return (
     <>
-      <Button type="primary" onClick={() => setVisible(true)}>
-        Open Modal of 1000px width
-      </Button>
-      <Modal centered visible={visible} width={900} footer={null}>
+      <Modal
+        centered
+        visible={props.visible}
+        width={900}
+        footer={null}
+        onCancel={cancelHandler}
+      >
         <div className={classes.modal_title}>
           <div className={classes.modal_user_avatar}>
             <Image
@@ -49,16 +53,16 @@ export const TaskModal = (props) => {
           </div>
           <div className={classes.description}>
             <Text className={classes.task_title}>Drawel</Text>
-            <div className={classes.user}>
+            {/* <div className={classes.user}>
               <Text>توسط:</Text>
               <Text>mohammadreza_76،</Text>
-              <Text>در 8 فروردین - 18:04</Text>
-            </div>
+              <Text>در {props.date}</Text>
+            </div> */}
           </div>
-          <Button type="primary" className={classes.exit_btn}>
+          {/* <Button type="primary" className={classes.exit_btn}>
             <MdCall />
             تماس
-          </Button>
+          </Button> */}
         </div>
         <div className={classes.modal}>
           <div className={classes.right}>
