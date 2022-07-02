@@ -23,6 +23,11 @@ export const TaskCreate = (props) => {
       })
       .finally(() => {
         setShowTaskCreateBox(false);
+      })
+      .catch((error) => {
+        error.response.data
+          ? message.error(error.response.data.detail)
+          : message.error("خطایی رخ داده است");
       });
   };
   return (

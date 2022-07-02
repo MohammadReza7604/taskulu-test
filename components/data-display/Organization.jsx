@@ -1,21 +1,15 @@
 import { DownOutlined } from "@ant-design/icons";
 import { Typography } from "antd";
 import Title from "antd/lib/typography/Title";
-import axios from "axios";
-import Cookies from "js-cookie";
 import Image from "next/image";
-import { useRouter } from "next/router";
-import React, { useEffect, useState } from "react";
-import { BackendUrls, BaseUrl } from "../../utils/backend-url";
+import React, { useState } from "react";
 import { CreateOrganizationalProjectModal } from "../feedback/CreateOrganizationalProjectModal";
 import { CardProject } from "./CardProject";
 import classes from "./styles/Organization.module.css";
 
 const { Link } = Typography;
 export const Organization = (props) => {
-  const token = Cookies.get("token");
   const [showModal, setShowModal] = useState(false);
-  const router = useRouter();
   const cancelHandler = () => {
     setShowModal(false);
   };

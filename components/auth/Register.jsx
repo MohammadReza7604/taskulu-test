@@ -29,8 +29,10 @@ export const Register = () => {
       .finally(() => {
         setLoading(false);
       })
-      .catch((err) => {
-        message.error(err.response.data.detail);
+      .catch((error) => {
+        error.response.data
+          ? message.error(error.response.data.detail)
+          : message.error("خطایی رخ داده است");
       });
   };
 

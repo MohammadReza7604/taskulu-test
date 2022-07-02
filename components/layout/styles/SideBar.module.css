@@ -1,5 +1,5 @@
 .sider {
-  width: 15%;
+  width: 14%;
   background-color: #1c334e;
   display: flex;
   flex-direction: column;
@@ -47,7 +47,7 @@
   color: #fff;
 }
 .footer {
-  width: 15%;
+  width: 14%;
   padding-top: 10px;
   padding-bottom: 10px;
   background-color: #14263c;

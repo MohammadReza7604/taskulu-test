@@ -1,10 +1,9 @@
 import React from "react";
-import { Button, Form, Input, Spin, Typography } from "antd";
+import { Button, Form, Input, message, Spin, Typography } from "antd";
 import { ListBox } from "../data-display/ListBox";
 import classes from "./styles/ProjectLists.module.css";
 import { BackendUrls, httpRequest } from "../../utils/backend-url";
 import { GoPlus } from "react-icons/go";
-import { TaskModal } from "../feedback/TaskModal";
 
 const { Text } = Typography;
 export const ProjectLists = (props) => {
@@ -14,10 +13,16 @@ export const ProjectLists = (props) => {
       name: form.getFieldsValue().name,
       project: props.projectId,
     };
-    httpRequest(BackendUrls.list, "POST", params).then((res) => {
-      form.resetFields();
-      props.setUpdate((r) => !r);
-    });
+    httpRequest(BackendUrls.list, "POST", params)
+      .then((res) => {
+        form.resetFields();
+        props.setUpdate((r) => !r);
+      })
+      .catch((error) => {
+        error.response.data
+          ? message.error(error.response.data.detail)
+          : message.error("خطایی رخ داده است");
+      });
   };
 
   return (

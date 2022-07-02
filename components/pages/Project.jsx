@@ -19,13 +19,20 @@ export const Project = () => {
   useEffect(() => {
     if (router.query.id) {
       setLoading(true);
-      httpRequest(BackendUrls.list + "list/" + router.query.id + "/", "GET")
-        .finally(() => {
-          setLoading(false);
-        })
-        .then((res) => {
-          setProjectData(res.data);
-        });
+      httpRequest(
+        BackendUrls.list + "list/" + router.query.id + "/",
+        "GET"
+      ).then((res) => {
+        setProjectData(res.data)
+          .finally(() => {
+            setLoading(false);
+          })
+          .catch((error) => {
+            error.response.data
+              ? message.error(error.response.data.detail)
+              : message.error("خطایی رخ داده است");
+          });
+      });
     }
   }, [router.query, update]);
   return (

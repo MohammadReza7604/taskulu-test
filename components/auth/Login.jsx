@@ -6,7 +6,7 @@ import { CustomCard } from "../data-display/CustomCard";
 import { CustomInput } from "../data-entry/CustomInput";
 import classes from "./styles/Login.module.css";
 import { useRouter } from "next/router";
-import { BackendUrls, BaseUrl, httpRequest } from "../../utils/backend-url";
+import { BackendUrls, httpRequest } from "../../utils/backend-url";
 import Cookies from "js-cookie";
 
 const { Text, Link } = Typography;
@@ -30,9 +30,11 @@ export const Login = () => {
       .finally(() => {
         setLoading(false);
       })
-      .catch((err) => {
+      .catch((error) => {
         // TODO: error ro nabayad log begiri bayad be soorate message namayesh bedi
-        message.error(err.response.data.detail);
+        error.response.data
+          ? message.error(error.response.data.detail)
+          : message.error("خطایی رخ داده است");
       });
   };
 
